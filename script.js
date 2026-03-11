@@ -1,5 +1,4 @@
 const newsContainer = document.getElementById("news-container");
-const trailersContainer = document.getElementById("trailers-container");
 const seasonContainer = document.getElementById("season-container");
 
 
@@ -42,7 +41,7 @@ const data=await res.json();
 
 newsContainer.innerHTML="";
 
-data.items.slice(0,6).forEach(noticia=>{
+data.items.slice(0,12).forEach(noticia=>{
 
 const imagen=obtenerImagen(noticia);
 
@@ -74,65 +73,6 @@ newsContainer.appendChild(card);
 newsContainer.innerHTML="No se pudieron cargar las noticias.";
 
 }
-
-}
-
-
-/* =====================
-TRAILERS
-===================== */
-
-function cargarTrailers(){
-
-const trailers=[
-
-{
-titulo:"Chainsaw Man Reze Arc Movie",
-video:"https://www.youtube.com/embed/j9sSzNmB5po"
-},
-
-{
-titulo:"Solo Leveling Temporada 2",
-video:"https://www.youtube.com/embed/eqy85AL70PU"
-},
-
-{
-titulo:"Jujutsu Kaisen Nuevo Arco",
-video:"https://www.youtube.com/embed/pkKu9hLT-t8"
-},
-
-{
-titulo:"Blue Lock Temporada 2",
-video:"https://www.youtube.com/embed/4Jt78n_A7jM"
-}
-
-];
-
-trailersContainer.innerHTML="";
-
-trailers.forEach(t=>{
-
-const card=document.createElement("div");
-card.className="news-card";
-
-card.innerHTML=`
-
-<iframe width="100%" height="200"
-src="${t.video}"
-allowfullscreen>
-</iframe>
-
-<div class="news-content">
-
-<h3>${t.titulo}</h3>
-
-</div>
-
-`;
-
-trailersContainer.appendChild(card);
-
-});
 
 }
 
@@ -181,5 +121,4 @@ seasonContainer.appendChild(card);
 /* iniciar */
 
 cargarNoticias();
-cargarTrailers();
 cargarTemporada();
